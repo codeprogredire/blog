@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+    <head>
+        <title>Quotations Blog Homepage!</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/bootstrap_theme.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/myblog.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">Quotations Blog</a></h1>
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
+        </div>
+
+        <div>
+            <h2><a href="{% url 'about' %}">About</a> | <a href="{% url 'contact' %}">Contact</a></h2>
+        </div>
+
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
